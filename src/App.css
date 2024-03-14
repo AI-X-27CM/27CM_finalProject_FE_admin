@@ -1,0 +1,365 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+/* 모든 컨테이너가 화면 너비에 맞춰지도록 설정 */
+.container {
+  width: 100vw;
+  max-width: 100%; /* 화면 너비를 초과하지 않음 */
+  overflow-y: auto; /* 필요한 경우에만 세로 스크롤 허용 */
+  box-sizing: border-box; /* 패딩이나 보더가 너비에 포함되도록 설정 */
+}
+
+/* 차트를 포함하는 컨테이너 */
+.chart-container {
+  max-width: 100%; /* 화면 너비를 초과하지 않음 */
+  overflow: hidden; /* 컨테이너 내부에서 스크롤 생기지 않도록 */
+}
+
+/* 내용이 넘치는 경우 스크롤 허용하지 않음 */
+.content {
+  overflow: hidden; /* 내용이 넘쳐도 스크롤 없음 */
+}
+
+
+.elevation-4{background-color: #36454F;}
+.badge-warning {
+  color: #fff;
+  background-color: #65b974;
+}
+
+body{font-size: medium;}
+
+.sidebar-closed .main-sidebar {
+  /* 사이드바 닫힘 상태 스타일 */
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar-closed .content-wrapper {
+  /* 사이드바가 닫혔을 때 콘텐츠 영역이 확장되는 스타일 */
+  margin-left: 0;
+}
+
+
+.table-head-fixed tbody tr:nth-of-type(odd) {
+  background-color: rgba(252, 252, 234, 0.5); /* 홀수 행 배경색 */
+}
+
+.table-head-fixed tbody tr:nth-of-type(even) {
+  background-color: rgba(250, 233, 233, 0.5);/* 짝수 행 배경색 */
+}
+
+.table td {
+  padding-top: 12px; /* 위쪽 패딩 */
+  padding-bottom: 12px; /* 아래쪽 패딩 */
+}
+.nav-sidebar .nav-item>.nav-link {
+  margin-bottom: 2rem;
+}
+
+.sub{padding-left:30px;  }
+
+.delete{border-radius: 5px;
+  border: 1px solid #fc1717;
+  background-color: #e01919;
+  color: #FFFFFF;
+  font-size: 10px;
+  padding: 4px 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  }
+
+  .rowchart{display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: 90vh;
+    overflow-x: "hidden"
+   }
+ 
+  .home-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 두 개의 세로 열 */
+    grid-template-rows: repeat(2, 1fr); /* 각 행을 플렉시블한 사이즈로 조정 */
+    gap: 5px; /* 섹션 사이의 간격 */
+    align-items: stretch; /* 각 섹션이 할당된 영역을 가득 채우도록 설정 */
+    justify-content: center; /* 가로 방향으로 중앙 정렬 */
+    height: 94vh; /* 전체 컨테이너 높이를 화면 높이와 동일하게 설정 */
+    margin: 0 auto; /* 상하 마진 없이 좌우 중앙 정렬 */
+    overflow: hidden; /* 컨테이너 외부로 내용이 넘칠 경우 숨김 처리 */
+    padding: 5px; /* 컨테이너의 패딩 추가 */
+    
+
+  }
+  
+  .home-section {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    
+  }
+  
+  .home-section-content {
+    
+    transform-origin: center;
+    width: 100%; /* 너비를 조정합니다 */
+    height: auto; /* 높이는 내용에 따라 자동으로 조정합니다 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤바를 표시합니다 */
+  }
+  .bar-chart-tabs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* 컨테이너의 너비를 최대로 설정 */
+    justify-content: center; /* 세로 방향으로 중앙 정렬 */
+    height: 90vh; /* 브라우저 뷰포트의 전체 높이를 사용 */
+}
+/* 차트 컨테이너에만 중앙정렬을 적용 */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+}
+  
+  .nav-pills{
+    width: 100%; /* 버튼을 감싸는 컨테이너의 너비도 100%로 설정합니다. */
+    justify-content: center; /* 이 속성을 사용하여 버튼을 가로 방향으로 중앙에 배치합니다. */
+  }
+  
+  .nav-item1 {
+    margin-right: 10px;
+  }
+  
+  .nav-pills .nav-links {
+    color: #78b4f3;
+    background-color: #f9ecf8;
+    width: 80px;
+    height: 40px;
+  }
+  
+  .nav-pills .nav-links:not(.active):hover {
+    color: #78b4f3;
+    background-color: #f9ecf8;
+  }
+  
+  .nav-pills .nav-links.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #e785db;
+  }
+  
+  .nav-pills .nav-links {
+    border-radius: 0.25rem;
+    border: 1px solid transparent; /* Ensure borders are removed */
+  }
+  .chart-wrapper {
+    width: 100%; /* 차트의 너비를 조정하여 컨테이너에 맞게 설정 */
+    max-width: 600px; /* 최대 너비를 설정하여 큰 화면에서도 중앙에 위치하도록 함 */
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    height: 40vh; /* 화면의 전체 높이를 사용합니다. */
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f8dfdf}
+
+
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto; /* 중앙 정렬을 위해 자동 마진 사용 */
+  }
+  
+  .table-responsive {
+    width: 100%; /* flex 컨테이너 내에서 테이블이 가득 차도록 설정 */
+    overflow-x: auto; /* 화면 크기가 줄어들 때 스크롤바가 나타나도록 설정 */
+  }
+
+  th {
+    background-color: #f1c7c7; /* 헤더 배경색 설정, 필요에 따라 변경 가능 */
+   
+  }
+  .input-group-sm {
+    margin-bottom: 20px; /* 테이블과의 간격을 늘림 */
+  }
+  
+  
+  .table-container2{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가로 중앙 정렬 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  width: 80%;
+  margin-top: 150px; /* 필요한 상단 여백 */
+  margin-left: auto; /* 수평 중앙 정렬을 위해 자동 마진 사용 */
+  margin-right: auto; /* 수평 중앙 정렬을 위해 자동 마진 사용 */
+  }
+ 
+  .content-wrapper {
+    background-color: #fff;
+}
+  .btn-default {
+    padding: 5px 10px; /* 버튼 패딩 조절 */
+  }
+  
+  /* 검색 버튼 내부 아이콘 크기 조절을 위한 클래스 추가 */
+  .btn-default .fas {
+    font-size: 0.8rem; /* 아이콘 크기 줄임, 필요에 따라 조정 */
+  }
+  
+
+  .input-group-sm {
+    width: 50%; /* 검색 바의 너비를 조정합니다 */
+    margin-bottom: 20px; /* 테이블과의 간격을 조정합니다 */
+  }
+  
+  /* 검색 바 내 버튼 스타일링 */
+  .input-group-append .btn-default {
+    padding: 5px 10px; /* 패딩을 조정하여 버튼 크기 변경 */
+  }
+  
+  /* 검색 아이콘 크기 조정 (Font Awesome 클래스를 사용한다고 가정) */
+  .fa-search {
+    font-size: 1rem; /* 아이콘의 크기를 조절합니다 */
+  }
+  
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffeded;
+    outline: 0;
+    box-shadow: inset 0 0 0 transparent;
+}
+
+.btn-default {
+  background-color: #afd4f8;
+  border-color: #ffeded;
+  color: #444;
+}
+
+.component-container2 {
+ 
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 100%;
+}
+
+.chart-container2 {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.chart-wrapper2 {
+  width: 100%; /* 컨테이너 내에서 차트가 가득 차도록 설정 */
+  height: 100%; /* 컨테이너의 높이에 맞춰 차트가 조절되도록 설정 */
+}
+
+.nav-container2 {
+  display: flex;
+  justify-content: center; /* 버튼을 수평 중앙에 정렬합니다. */
+  margin: 50px auto;
+}
+.nav-container2 .nav {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* 전체 너비를 사용하도록 설정 */
+  list-style-type: none; /* 기본 리스트 스타일 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+}
+.nav-container2 .nav .nav-item1 {
+  margin: 0 10px; /* 각 항목의 마진을 설정하여 버튼 사이에 공간을 추가 */
+}
+
+
+
+.nav-pills2 {
+  display: inline-block; /* 블록 요소를 인라인 블록으로 만들어 text-align을 이용한 중앙 정렬이 가능하게 함 */
+  list-style: none; /* 리스트 스타일 제거 */
+  padding: 0; /* 패딩 제거 */
+  width: 100%; /* 버튼을 감싸는 컨테이너의 너비도 100%로 설정합니다. */
+  justify-content: center; /* 이 속성을 사용하여 버튼을 가로 방향으로 중앙에 배치합니다. */
+}
+
+
+
+  
+  .nav-item1 {
+    margin-right: 10px;
+  }
+  
+  .nav-pills2 .nav-links {
+    color: #78b4f3;
+    background-color: #f9ecf8;
+    width: 80px;
+    height: 40px;
+  }
+  
+  .nav-pills2 .nav-links:not(.active):hover {
+    color: #78b4f3;
+    background-color: #f9ecf8;
+  }
+  
+  .nav-pills2 .nav-links.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #e785db;
+    margin: 0 10px;
+  }
+  
+  .nav-pills2 .nav-links {
+    border-radius: 0.25rem;
+    border: 1px solid transparent; /* Ensure borders are removed */
+  }
+
+
+
+  
+
+  .component-container3 {
+ 
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+  }
+
+  .chart-wrapper3{
+    height: 100%;
+    width: 100%;
+}
+
+
+.chart-container3 {
+  width: 90%;
+  height: 100%;
+  margin: 100px auto;
+}
+
+
