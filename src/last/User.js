@@ -21,14 +21,7 @@ function User() {
 
   return (
    <>
-      <div className="input-group input-group-sm" style={{ width: '200px', marginLeft: 'auto' }}>
-        <input type="text" name="table_search" className="form-control float-right" placeholder="Search" />
-        <div className="input-group-append">
-          <button type="submit" className="btn btn-default">
-            <i className="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
+    
 
       <div style={{ overflowX: 'auto' }}>
         <table>

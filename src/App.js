@@ -8,7 +8,8 @@ import Phishing2 from "./last/Phishing2";
 import User2 from "./last/User2";
 import Label from "./last/Label";
 import Error2 from "./last/Error2";
-import Login from "./last/Login";
+import Errorlog from "./last/Errorlog";
+
 import Day2 from "./last/Day2";
 import Frequency from "./last/Frequency";
 
@@ -30,9 +31,10 @@ function App() {
         <Side isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="content-wrapper">
           <Routes>
-            <Route path="/login" element={<Login />} />
+         
             <Route path="/" element={<Home />} />
             <Route path="/error" element={<Error2 />} />
+            <Route path="/errorlog" element={<Errorlog />} />
             <Route path="/label" element={<Label />} />
             <Route path="/phishing" element={<Phishing2 />} />
             <Route path="/user" element={<User2 />} />

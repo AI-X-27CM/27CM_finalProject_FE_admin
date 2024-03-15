@@ -33,16 +33,30 @@ import '../App.css';
               <li className="nav-item menu-open">
                
                 <ul className="nav nav-treeview">
-                  <li className="nav-item">
-                    <a href="/error" className="nav-link">
-                      <i className="nav-icon fas fa-copy" />
+                <li className="nav-item">
+                    <a href="#" className="nav-link">
+                      <i className="nav-icon fas fa-chart-pie" />
                       <p>
-                        오류관리
-                        <i className="fas fa-angle-left right" />
-                     
+                        오류
+                        <i className="right fas fa-angle-left" />
                       </p>
                     </a>
-                    </li>
+                    <ul className="nav nav-treeview">
+                    <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                        <a href="/error" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+                          <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px',  marginLeft: '30px'}} />
+                          <p style={{ margin: 0 }}>오류관리</p>
+                        </a>
+                      </li>
+                      <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                        <a href="/errorlog" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+                          <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px', marginLeft: '30px' }} />
+                          <p style={{ margin: 0 }}>오류로그</p>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
                   <li className="nav-item">
                     <a href="#" className="nav-link">
                       <i className="nav-icon fas fa-chart-pie" />
