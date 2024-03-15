@@ -104,10 +104,7 @@ function Header(){
         <div className="dropdown-divider" />
         <a href="#" className="dropdown-item dropdown-footer">See All Notifications</a>
     </div></li> 
-    <li className="nav-item d-none d-sm-inline-block">
-      <Link to="/login" className="nav-link">LOGIN</Link>
-      
-    </li> 
+  
   </ul>
 </nav>
 {/* /.navbar */}
