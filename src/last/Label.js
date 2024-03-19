@@ -13,7 +13,7 @@ function BarChart() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const data = await response.json();
+        const data = await response.json(); 
 
         if (chartInstance.current) {
           chartInstance.current.destroy(); // 이전 차트 파괴

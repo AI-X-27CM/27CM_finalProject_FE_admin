@@ -111,7 +111,8 @@ const Day = () => {
       </div>
     </div>
   );
-};
+};  
+
 
 export default Day;
 

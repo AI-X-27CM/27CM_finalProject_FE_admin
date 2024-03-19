@@ -98,7 +98,7 @@ function Phishing() {
                     <button type='button' className='delete' onClick={() => handleDelete(entry.Detect_pk)}>삭제</button>
                     </td>
                   </tr>
-                ))}
+                ))} 
               </tbody>
             </table>
           </div>

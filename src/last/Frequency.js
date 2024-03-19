@@ -25,7 +25,7 @@ function Frequency() {
           'rgba(153, 102, 255, 0.5)',
           'rgba(255, 159, 64, 0.5)'
         ],
-        hoverOffset: 4
+        hoverOffset: 4 
       }]
     };
 

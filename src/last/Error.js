@@ -69,6 +69,7 @@ function Error() {
       const canvas = chartContainer.current;
       canvas.onclick = handleClick;
 
+      
       return () => {
         chartInstance.destroy();
         canvas.onclick = null; // 이벤트 리스너를 제거합니다.

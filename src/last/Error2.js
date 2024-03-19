@@ -48,7 +48,7 @@ function Error() {
             y: {
               beginAtZero: true
             }
-          }
+          } 
         }
       });
 

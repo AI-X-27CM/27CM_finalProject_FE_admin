@@ -57,7 +57,7 @@ body{font-size: small;}
   padding-bottom: 12px; /* 아래쪽 패딩 */
 }
 .nav-sidebar .nav-item>.nav-link {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; 
 }
 
 

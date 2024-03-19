@@ -24,7 +24,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  return (
+  return (  
     <Router>
       <div className={`wrapper ${isSidebarOpen ? '' : 'sidebar-closed'}`}>
         <Header />

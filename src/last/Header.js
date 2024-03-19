@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function Header(){
-    return (
+    return ( 
     <div>
     {/* Navbar */}
     <nav className="main-header navbar navbar-expand navbar-white navbar-light">

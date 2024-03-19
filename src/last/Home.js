@@ -13,7 +13,7 @@ function Home() {
     <div class="home-section-content">
     <Error />
     </div></div>
-    <div className="home-section">
+    <div className="home-section"> 
     <div class="home-section-content">
     <Day />
     </div></div>

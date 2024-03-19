@@ -29,7 +29,7 @@ function User() {
   const handleFilterByChange = (event) => {
     setFilterBy(event.target.value);
   };
-
+ 
   // 필터링된 데이터를 계산하는 로직
   const filteredData = userData.filter((entry) => {
     switch (filterBy) {

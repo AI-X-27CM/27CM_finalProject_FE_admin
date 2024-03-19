@@ -12,7 +12,7 @@ const Day = () => {
     scales: {
       y: {
         beginAtZero: true
-      }
+      } 
     },
     maintainAspectRatio: false
   };

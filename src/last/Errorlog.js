@@ -22,7 +22,7 @@ const ErrorLog = () => {
     { id: 3, severity: 'danger', title: 'Error Log', message: 'This is an error log.', createdAt: 1622492345680 },
     
     // ... 기타 로그들
-  ]); 
+  ]);  
     
 
   useEffect(() => {

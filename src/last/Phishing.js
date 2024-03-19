@@ -14,7 +14,7 @@ function Phishing() {
       }
     };
 
-    fetchPhishingData();
+    fetchPhishingData(); 
   }, []);
 
   const handleDelete = async (detectPk) => {
