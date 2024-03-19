@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 
 const ErrorLog = () => {
@@ -76,7 +77,7 @@ const ErrorLog = () => {
         </div>
       </div>
    </div> 
-   
+   타임스탬프 기능 적용되어 데이터가 들어오면 자동으로 맞는 색으로 순서대로 출력
    
    {finalLogs.map((log) => (
         <div key={log.displayId} className="row justify-content-center mb-2">

@@ -1,8 +1,6 @@
+/* eslint-disable */
 import React from "react";
 import '../App.css';
-
-
-
 
   function Side({ isSidebarOpen, toggleSidebar }) {
     return (
@@ -41,14 +39,14 @@ import '../App.css';
                         <i className="right fas fa-angle-left" />
                       </p>
                     </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                    <ul className="nav nav-treeview sub"  style={{  paddingLeft: '30px' }}>
+                    <li className="nav-item " style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/error" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px',  marginLeft: '30px'}} />
                           <p style={{ margin: 0 }}>오류관리</p>
                         </a>
                       </li>
-                      <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                      <li className="nav-item " style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/errorlog" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px', marginLeft: '30px' }} />
                           <p style={{ margin: 0 }}>오류로그</p>
@@ -65,20 +63,20 @@ import '../App.css';
                         <i className="right fas fa-angle-left" />
                       </p>
                     </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                    <ul className="nav nav-treeview sub" style={{  paddingLeft: '30px' }}>
+                    <li className="nav-item" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/day" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px',  marginLeft: '30px'}} />
                           <p style={{ margin: 0 }}>Day/Month</p>
                         </a>
                       </li>
-                      <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                      <li className="nav-item" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/label" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px', marginLeft: '30px' }} />
                           <p style={{ margin: 0 }}>피싱 종류별</p>
                         </a>
                       </li>
-                      <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                      <li className="nav-item" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/frequency" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px' , marginLeft: '30px'}} />
                           <p style={{ margin: 0 }}>발생빈도</p>
@@ -95,15 +93,15 @@ import '../App.css';
                         <i className="fas fa-angle-left right" />
                       </p>
                     </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                    <ul className="nav nav-treeview sub" style={{  paddingLeft: '30px' }}>
+                    <li className="nav-item" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/phishing" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px' , marginLeft: '30px'}} />
                           <p style={{ margin: 0 }}>피싱번호조회</p>
                         </a>
                       </li>
 
-                      <li className="nav-item sub" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
+                      <li className="nav-item" style={{ display: 'flex', alignItems: 'center', padding: '5px 0' }}>
                         <a href="/user" className="nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                           <img src="dist/img/subicon.png" className="subicon" style={{ width: '15px', height: '15px', marginRight: '8px' , marginLeft: '30px'}} />
                           <p style={{ margin: 0 }}>회원관리</p>

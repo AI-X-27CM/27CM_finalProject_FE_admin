@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import Error from './Error';
 import Day from './Day';

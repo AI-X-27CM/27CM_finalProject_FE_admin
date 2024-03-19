@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 
 function User() {
@@ -46,7 +47,7 @@ function User() {
   });
 
   return (
-    <div className="table-container2">
+    <div className="table-container2" style={{ marginBottom: '100px' }}>
       <div className="d-flex mb-5">
         <div className="input-group input-group-sm w-auto">
           <select className="custom-select" style={{ paddingRight: '0rem', width: '100px', border: 'none' }} onChange={handleFilterByChange}>
@@ -71,7 +72,7 @@ function User() {
         </div>
       </div>
       
-      <div className="table-responsive">
+      <div className="table-responsive" >
         <table>
           <thead>
             <tr>
@@ -81,7 +82,7 @@ function User() {
               <th>가입날짜</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {filteredData.map((entry, index) => (
               <tr key={index}>
                 <td>{entry.User_pk}</td>

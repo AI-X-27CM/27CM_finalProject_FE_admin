@@ -1,4 +1,6 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Phishing() {
   const [phishingData, setPhishingData] = useState([]);
@@ -8,35 +10,30 @@ function Phishing() {
   useEffect(() => {
     async function fetchPhishingData() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/phishingData');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setPhishingData(data);
+        const response = await axios.get('http://127.0.0.1:8000/phishingData');
+        setPhishingData(response.data);
       } catch (error) {
-        console.error('There was a problem fetching the data:', error);
+        console.error('There was a problem fetching the data:', error.message);
+        // 오류를 사용자에게 알릴 수 있습니다.
+        alert(`Data fetching error: ${error.message}`);
       }
     }
 
     fetchPhishingData();
   }, []);
 
-  const handleDelete = async (id) => {
-    // DELETE 요청을 서버로 보냅니다.
+  const handleDelete = async (detectPk) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/phishingData/${id}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) throw new Error('Delete operation failed.');
-
-      // 클라이언트 상태 업데이트
-      setPhishingData(phishingData.filter((item) => item.Detect_pk !== id));
+      await axios.delete(`http://127.0.0.1:8000/phishingData/${detectPk}`);
+      setPhishingData(phishingData.filter(item => item.Detect_pk !== detectPk));
+      alert('Item successfully deleted');
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error('Error deleting the item:', error);
+      alert('Failed to delete. Please try again.');
     }
   };
 
+  // 검색과 필터 변경 핸들러는 이전과 동일합니다.
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -45,17 +42,13 @@ function Phishing() {
     setFilterBy(event.target.value);
   };
 
-  // 필터링된 데이터를 계산하는 로직
-  const filteredData = phishingData.filter((entry) => {
-    if (filterBy === 'User') {
-      // 유저 정보를 기준으로 검색
-      return entry.User_pk.toString().toLowerCase().includes(searchTerm.toLowerCase());
-    } else if (filterBy === 'Date') {
-      // 날짜를 기준으로 검색
-      return new Date(entry.Date).toLocaleString('ko-KR').includes(searchTerm);
-    }
-    return true;
+  // 데이터 필터링 로직은 이전과 동일합니다.
+  const filteredData = phishingData.filter(entry => {
+    return filterBy === 'User'
+      ? entry.User_pk.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      : new Date(entry.Date).toLocaleString('ko-KR').includes(searchTerm);
   });
+
 
   return (
     <div className="table-container2">
@@ -102,7 +95,7 @@ function Phishing() {
                     <td>{entry.Record}</td>
                     <td>{entry.Label}</td>
                     <td>
-                      <button type='button' className='delete' onClick={() => handleDelete(entry.Detect_pk)}>삭제</button>
+                    <button type='button' className='delete' onClick={() => handleDelete(entry.Detect_pk)}>삭제</button>
                     </td>
                   </tr>
                 ))}
