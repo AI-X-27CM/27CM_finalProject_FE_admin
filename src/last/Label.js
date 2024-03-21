@@ -2,6 +2,8 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
+
+const url = 'http://192.168.0.165:8000'
 function BarChart() {
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
@@ -9,7 +11,7 @@ function BarChart() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/labelData');
+        const response = await fetch(url + '/labelData');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -31,11 +33,13 @@ function BarChart() {
               data: values,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)'
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(142, 148, 230, 0.5)'
               ],
               borderColor: [
                 'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
+                'rgba(54, 162, 235, 1)',
+                'rgba(142, 148, 230, 1)'
               ],
               borderWidth: 1
             }]

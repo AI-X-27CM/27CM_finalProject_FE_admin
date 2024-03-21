@@ -1,13 +1,14 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 
+const url = 'http://192.168.0.165:8000'
 function User() {
   const [userData, setUserData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('User'); // 검색 필터 상태
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/userData')
+    fetch(url +'/userData')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

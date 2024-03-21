@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const url = 'http://192.168.0.165:8000'
 function Phishing() {
   const [phishingData, setPhishingData] = useState([]);
 
   useEffect(() => {
     const fetchPhishingData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/phishingData');
+        const response = await axios.get(url +'/phishingData');
         setPhishingData(response.data);
       } catch (error) {
         console.error('There was a problem fetching the data:', error);
@@ -19,7 +20,7 @@ function Phishing() {
 
   const handleDelete = async (detectPk) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/phishingData/${detectPk}`);
+      await axios.delete(url +`/phishingData/${detectPk}`);
       setPhishingData(phishingData.filter(item => item.Detect_pk !== detectPk));
       alert('삭제되었습니다');
     } catch (error) {

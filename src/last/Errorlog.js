@@ -5,33 +5,35 @@ const ErrorLog = () => {
   const [activeId, setActiveId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [logs, setLogs] = useState([
-    { id: 1, severity: 'primary', title: 'Info Log', message: 'This is an info log.', createdAt: 1622492345678 },
-    { id: 2, severity: 'warning', title: 'Warning Log', message: 'This is a warning log.', createdAt: 1622492345679 },
-    { id: 3, severity: 'danger', title: 'Error Log', message: 'This is an error log.', createdAt: 1622492345680 },
-    { id: 1, severity: 'primary', title: 'Info Log', message: 'This is an info log.', createdAt: 1622492345678 },
-    { id: 2, severity: 'warning', title: 'Warning Log', message: 'This is a warning log.', createdAt: 1622492345679 },
-    { id: 3, severity: 'danger', title: 'Error Log', message: 'This is an error log.', createdAt: 1622492345680 },
-    { id: 1, severity: 'primary', title: 'Info Log', message: 'This is an info log.', createdAt: 1622492345678 },
-    { id: 2, severity: 'warning', title: 'Warning Log', message: 'This is a warning log.', createdAt: 1622492345679 },
-    { id: 3, severity: 'danger', title: 'Error Log', message: 'This is an error log.', createdAt: 1622492345680 },
-    { id: 1, severity: 'primary', title: 'Info Log', message: 'This is an info log.', createdAt: 1622492345678 },
-    { id: 2, severity: 'warning', title: 'Warning Log', message: 'This is a warning log.', createdAt: 1622492345679 },
-    { id: 3, severity: 'danger', title: 'Error Log', message: 'This is an error log.', createdAt: 1622492345680 },
-    { id: 1, severity: 'primary', title: 'Info Log', message: 'This is an info log.', createdAt: 1622492345678 },
-    { id: 2, severity: 'warning', title: 'Warning Log', message: 'This is a warning log.', createdAt: 1622492345679 },
-    { id: 3, severity: 'danger', title: 'Error Log', message: 'This is an error log.', createdAt: 1622492345680 },
+    
     
     // ... 기타 로그들
   ]);  
-    
+  const url = 'http://192.168.0.165:8000'
 
   useEffect(() => {
-    // 실제 애플리케이션에서는 여기서 API 호출 등을 통해 로그 데이터를 가져와 상태에 저장
-    setLogs(logs.map((log, index) => ({
-      ...log,
-      id: index + 1,  // 고유한 ID 할당
-      createdAt: Date.now() - (index * 1000),  // createdAt을 고유한 타임스탬프로 설정
-    })));
+    // API에서 로그 데이터를 가져오는 함수
+    const fetchLogs = async () => {
+      try {
+        const response = await fetch(url + '/errorlog');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setLogs(data.map(log => ({
+          ...log,
+          id: log.error_pk, // error_pk를 id로 사용
+          title: log.error_pk, // error_pk를 title로 사용
+          message: log.error, // error 컬럼을 message로 사용
+         // severity: log.error_pk === 404 ? 'warning' : 'danger', // error_pk에 따라 severity 결정(색)
+          createdAt: new Date(log.Date).getTime() // Date 문자열을 타임스탬프로 변환
+        })));
+      } catch (error) {
+        console.error("Failed to fetch logs:", error);
+      }
+    };
+  
+    fetchLogs(); // 함수 호출
   }, []);
 
   const handleSearchChange = (event) => {
@@ -49,7 +51,7 @@ const ErrorLog = () => {
   const filteredLogs = searchTerm
     ? logs.filter(
         log => log.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
-               log.title.toLowerCase().includes(searchTerm.toLowerCase())
+               log.title.toString().toLowerCase().includes(searchTerm.toLowerCase())
       )
     : displayedLogs;
 
@@ -76,27 +78,24 @@ const ErrorLog = () => {
           </div>
         </div>
       </div>
-   </div> 
-   타임스탬프 기능 적용되어 데이터가 들어오면 자동으로 맞는 색으로 순서대로 출력
-   
-   {finalLogs.map((log) => (
-        <div key={log.displayId} className="row justify-content-center mb-2">
-          <div className="col-md-8"> {/* 이 div에서 col-md-8 클래스를 사용해 너비를 설정합니다. */}
-            <div className={`card card-${log.severity} card-outline`} style={{ width: '100%' }}> {/* width를 100%로 설정하여 col-md-8 너비만큼 카드가 차지하도록 합니다. */}
-              <div className="card-header" onClick={() => toggleItem(log.displayId)} style={{ cursor: 'pointer' }}>
-                <h4 className="card-title w-100">{log.title}</h4>
-              </div>
-              <div id={`collapse${log.displayId}`} className={`collapse ${activeId === log.displayId ? 'show' : ''}`} data-parent="#accordionExample">
-                <div className="card-body">
-                  {log.message}
-                </div>
-              </div>
+    </div> 
+
+    {filteredLogs.map((log) => (
+      <div key={log.displayId} className="row justify-content-center mb-2">
+        <div className="col-md-8">
+          <div className="card" style={{ width: '100%', backgroundColor: '#fff2f3', border: '1px solid rgb(239 193 198)' }}>
+            <div className="card-body"style={{ width: '100%', backgroundColor: '#fff2f3', border: '1px solid #fae8ea' }}>
+              <h4 className="card-title">{log.title}</h4>
+              <p className="card-text">{log.message}</p>
+              {/* 추가 정보를 표시하려면 여기에 코드를 추가하세요. */}
             </div>
           </div>
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    ))}
+  </div>
+);
 };
+
 
 export default ErrorLog;

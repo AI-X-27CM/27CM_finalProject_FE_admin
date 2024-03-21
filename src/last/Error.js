@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 
+const url = 'http://192.168.0.165:8000'
+
 function Error() {
   const chartContainer = useRef(null);
   const [errorDetails, setErrorDetails] = useState(null);
@@ -8,7 +10,7 @@ function Error() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/errorData');
+        const response = await fetch(url + '/errorData');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -46,7 +48,16 @@ function Error() {
           maintainAspectRatio: true, // 한 번만 선언해야 합니다.
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: true,
+              ticks: {
+                // Only integer labels
+                stepSize: 1,
+                callback: function(value, index, ticks) {
+                  if (value % 1 === 0) {
+                    return value;
+                  }
+                }
+              }
             }
           }
         }
