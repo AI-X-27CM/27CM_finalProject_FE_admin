@@ -30,7 +30,7 @@ html, body {
   background-color: #65b974;
 }
 
-body{font-size: medium;}
+body{font-size: small;}
 
 .sidebar-closed .main-sidebar {
   /* 사이드바 닫힘 상태 스타일 */
@@ -57,10 +57,9 @@ body{font-size: medium;}
   padding-bottom: 12px; /* 아래쪽 패딩 */
 }
 .nav-sidebar .nav-item>.nav-link {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; 
 }
 
-.sub{padding-left:30px;  }
 
 .delete{border-radius: 5px;
   border: 1px solid #fc1717;
@@ -216,9 +215,8 @@ body{font-size: medium;}
   align-items: center; /* 가로 중앙 정렬 */
   justify-content: center; /* 세로 중앙 정렬 */
   width: 80%;
-  margin-top: 100px; /* 필요한 상단 여백 */
-  margin-left: auto; /* 수평 중앙 정렬을 위해 자동 마진 사용 */
-  margin-right: auto; /* 수평 중앙 정렬을 위해 자동 마진 사용 */
+  margin: 100px auto; /* 필요한 상단 여백 */
+  
   }
  
   .content-wrapper {
@@ -308,7 +306,10 @@ body{font-size: medium;}
   justify-content: center; /* 이 속성을 사용하여 버튼을 가로 방향으로 중앙에 배치합니다. */
 }
 
-
+.chart-wrapper {
+  width: 100%;
+  max-width: 900px;
+}
 
   
   .nav-item1 {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -23,7 +24,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  return (
+  return (  
     <Router>
       <div className={`wrapper ${isSidebarOpen ? '' : 'sidebar-closed'}`}>
         <Header />

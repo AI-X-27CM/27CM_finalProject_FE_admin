@@ -1,6 +1,9 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 
+
+const url = 'http://192.168.0.165:8000'
 const Day = () => {
   const [activeTab, setActiveTab] = useState('day');
   const [dataDay, setDataDay] = useState(null);
@@ -18,7 +21,7 @@ const Day = () => {
 
   useEffect(() => {
     // 일별 데이터를 가져옵니다.
-    fetch('http://127.0.0.1:8000/getDailyData/')
+    fetch(url + '/getDailyData/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -48,7 +51,7 @@ const Day = () => {
 
   useEffect(() => {
     // 월별 데이터를 가져옵니다.
-    fetch('http://127.0.0.1:8000/getMonthlyData/')
+    fetch(url + '/getMonthlyData/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -110,7 +113,8 @@ const Day = () => {
       </div>
     </div>
   );
-};
+};  
+
 
 export default Day;
 

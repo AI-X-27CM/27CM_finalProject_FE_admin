@@ -1,12 +1,14 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 
+const url = 'http://192.168.0.165:8000'
 function User() {
   const [userData, setUserData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('User'); // 검색 필터 상태
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/userData')
+    fetch(url +'/userData')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -28,7 +30,7 @@ function User() {
   const handleFilterByChange = (event) => {
     setFilterBy(event.target.value);
   };
-
+ 
   // 필터링된 데이터를 계산하는 로직
   const filteredData = userData.filter((entry) => {
     switch (filterBy) {
@@ -46,7 +48,7 @@ function User() {
   });
 
   return (
-    <div className="table-container2">
+    <div className="table-container2" style={{ marginBottom: '100px' }}>
       <div className="d-flex mb-5">
         <div className="input-group input-group-sm w-auto">
           <select className="custom-select" style={{ paddingRight: '0rem', width: '100px', border: 'none' }} onChange={handleFilterByChange}>
@@ -71,7 +73,7 @@ function User() {
         </div>
       </div>
       
-      <div className="table-responsive">
+      <div className="table-responsive" >
         <table>
           <thead>
             <tr>
@@ -81,7 +83,7 @@ function User() {
               <th>가입날짜</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {filteredData.map((entry, index) => (
               <tr key={index}>
                 <td>{entry.User_pk}</td>
