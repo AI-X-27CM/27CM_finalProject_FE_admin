@@ -8,6 +8,7 @@ function BarChart() {
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
 
+  
   useEffect(() => {
     async function fetchData() {
       try {
@@ -15,16 +16,24 @@ function BarChart() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const data = await response.json(); 
-
+        const data = await response.json();
+  
+        // label 값에 따라 변경될 이름을 정의한 객체
+        const labelNames = {
+          imp: '지인사칭',
+          inst_imp: '기관사칭',
+          None: '해당없음',
+        };
+  
+        // 데이터의 키(라벨)를 우리가 원하는 문자열로 변경
+        const labels = Object.keys(data).map(key => labelNames[key] || key); // 없는 키의 경우 기본값으로 key 사용
+        const values = Object.values(data);
+  
         if (chartInstance.current) {
           chartInstance.current.destroy(); // 이전 차트 파괴
         }
-
+  
         const ctx = chartContainer.current.getContext('2d');
-        const labels = Object.keys(data);
-        const values = Object.values(data);
-
         chartInstance.current = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -34,12 +43,12 @@ function BarChart() {
               backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(54, 162, 235, 0.5)',
-                'rgba(142, 148, 230, 0.5)'
+                'rgba(255, 206, 86, 0.5)'
               ],
               borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
-                'rgba(142, 148, 230, 1)'
+                'rgba(255, 206, 86, 1)'
               ],
               borderWidth: 1
             }]
@@ -50,11 +59,11 @@ function BarChart() {
                 beginAtZero: true
               }
             },
-            maintainAspectRatio: false, // 크기를 고정하지 않음
-            aspectRatio: 1.5, // 가로:세로 비율을 조절하여 크기 조정
+            maintainAspectRatio: false,
+            aspectRatio: 1.5,
             plugins: {
               legend: {
-                display: false // 라벨 플러그인 비활성화
+                display: false
               }
             }
           }
@@ -63,19 +72,21 @@ function BarChart() {
         console.error('There was a problem fetching the data:', error);
       }
     }
-
+  
     fetchData();
-
-  }, []); // 컴포넌트가 처음 렌더링될 때만 실행
+  }, []);
+  
 
   return (
+    <>
+    <h2>피싱종류별 피싱 건수</h2>
     <div className="rowchart" >
       <div>
         <div className="card-body">
           <canvas ref={chartContainer} id="bar-chart" width="700" height="600" /> {/* 크기를 700px로 조정 */}
         </div>
       </div>
-    </div>
+    </div></>
   );
 }
 
