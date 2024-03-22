@@ -80,7 +80,7 @@ const Day = () => {
   return (
     <>
     <h2>일별, 월별 피싱 건수</h2>
-      <div className="component-container2">
+      <div className="component-container2">  
         <div className="nav-container2">
           <ul className="nav nav-pills2">
             <li className="nav-item2">
