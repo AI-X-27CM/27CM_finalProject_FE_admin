@@ -78,7 +78,8 @@ const Day = () => {
       });
   }, []); // 두 번째 useEffect 끝
   return (
-    
+    <>
+    <h2>일별, 월별 피싱 건수</h2>
       <div className="component-container2">
         <div className="nav-container2">
           <ul className="nav nav-pills2">
@@ -108,7 +109,7 @@ const Day = () => {
             <Bar data={dataMonth} options={options} />
           )}
         </div>
-      </div>
+      </div></>
     );
   };
 

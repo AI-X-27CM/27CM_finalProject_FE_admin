@@ -9,7 +9,9 @@ function Phishing() {
     const fetchPhishingData = async () => {
       try {
         const response = await axios.get(url +'/phishingData');
-        setPhishingData(response.data);
+        // 받아온 데이터를 날짜 기준으로 내림차순 정렬
+        const sortedData = response.data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        setPhishingData(sortedData);
       } catch (error) {
         console.error('There was a problem fetching the data:', error);
       }
@@ -29,6 +31,17 @@ function Phishing() {
     }
   };
   
+  const getLabelName = (label) => {
+    switch(label) {
+      case 'imp':
+        return '지인사칭';
+      case 'inst_imp':
+        return '기관사칭';
+      case 'None':
+      default:
+        return '해당없음';
+    }
+  };
 
   return (
     <div style={{ overflowX: 'auto' }}>
@@ -50,7 +63,7 @@ function Phishing() {
            <td>{entry.User_pk}</td>
            <td>{new Date(entry.Date).toLocaleString('ko-KR')}</td>
            <td>{entry.Record}</td>
-           <td>{entry.Label}</td>
+           <td>{getLabelName(entry.Label)}</td>
            <td>
               <button type='button' className='delete' onClick={() => handleDelete(entry.Detect_pk)}>삭제</button>
               </td>

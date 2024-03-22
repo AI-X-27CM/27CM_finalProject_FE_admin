@@ -400,3 +400,5 @@ body{font-size: small;}
     background-color: #1fb539;
     border-color: green;}
     .form-control:focus { border-color: green;}
+
+  h2{text-align: center; margin:50px auto; font-weight: bold;}

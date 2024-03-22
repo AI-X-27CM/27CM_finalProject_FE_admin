@@ -82,11 +82,13 @@ function Frequency() {
   }, [chartData]); // chartData 상태가 변경될 때마다 실행됩니다.
 
   return (
+    <>
+    <h2>시간대별 피싱 건수</h2>
     <div className="rowchart">
       <div className="card-body">
         <canvas ref={chartContainer} width="700" height="600"></canvas>
       </div>
-    </div>
+    </div></>
   );
 }
 
