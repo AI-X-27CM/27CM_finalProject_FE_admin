@@ -23,7 +23,7 @@ const ErrorLog = () => {
         setLogs(data.map(log => ({
           ...log,
           id: log.error_pk, // error_pk를 id로 사용
-          title: log.error_pk, // error_pk를 title로 사용
+          title: log.Date, 
           message: log.error, // error 컬럼을 message로 사용
          // severity: log.error_pk === 404 ? 'warning' : 'danger', // error_pk에 따라 severity 결정(색)
           createdAt: new Date(log.Date).getTime() // Date 문자열을 타임스탬프로 변환
@@ -46,7 +46,7 @@ const ErrorLog = () => {
 
   const sortedLogs = logs.sort((a, b) => b.createdAt - a.createdAt);
 
-  const displayedLogs = sortedLogs.slice(0, 30);
+  const displayedLogs = sortedLogs.slice(0, 20);
 
   const filteredLogs = searchTerm
     ? logs.filter(
@@ -81,12 +81,13 @@ const ErrorLog = () => {
     </div> 
 
     {filteredLogs.map((log) => (
-      <div key={log.displayId} className="row justify-content-center mb-2">
+      <div key={log.id} className="row justify-content-center mb-2">
         <div className="col-md-8">
           <div className="card" style={{ width: '100%', backgroundColor: '#fff2f3', border: '1px solid rgb(239 193 198)' }}>
             <div className="card-body"style={{ width: '100%', backgroundColor: '#fff2f3', border: '1px solid #fae8ea' }}>
-              <h4 className="card-title">{log.title}</h4>
-              <p className="card-text">{log.message}</p>
+              <h4 className="card-title" style={{ fontSize:'medium' }}>{log.title}</h4>
+              <hr style={{ border: '1px solid rgb(251 229 231)' ,position: 'relative', top: '10px'  }}/>
+              <p className="card-text"  style={{ fontSize:'large' }}>{log.message}</p>
               {/* 추가 정보를 표시하려면 여기에 코드를 추가하세요. */}
             </div>
           </div>
