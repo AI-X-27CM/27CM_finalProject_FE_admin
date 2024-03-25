@@ -7,7 +7,7 @@ const url = 'http://192.168.0.165:8000'
 function BarChart() {
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
-
+  
   
   useEffect(() => {
     async function fetchData() {

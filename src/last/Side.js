@@ -1,10 +1,10 @@
-/* eslint-disable */
+/* eslint-disable */-bs-toggle
 import React from "react";
 import '../App.css';
 
-  function Side({ isSidebarOpen, toggleSidebar }) {
-    return (
-      <aside className="main-sidebar sidebar-dark-primary elevation-4">
+function Side({ isSidebarOpen, toggleSidebar }) {
+  return (
+    <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* 사이드바 내용 */}
        
 

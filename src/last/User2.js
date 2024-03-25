@@ -1,22 +1,23 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 
-const url = 'http://192.168.0.165:8000'
+const url = 'http://192.168.0.165:8000';
+
 function User() {
   const [userData, setUserData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterBy, setFilterBy] = useState('User'); // 검색 필터 상태
+  const [filterBy, setFilterBy] = useState('ID'); // 초기 필터링 옵션을 'ID'로 설정
 
   useEffect(() => {
-    fetch(url +'/userData')
+    fetch(url + '/userData')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json(); // JSON 형식으로 파싱된 응답을 반환
+        return response.json();
       })
       .then(data => {
-        setUserData(data);
+        const sortedData = data.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+        setUserData(sortedData);
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
@@ -30,31 +31,25 @@ function User() {
   const handleFilterByChange = (event) => {
     setFilterBy(event.target.value);
   };
- 
-  // 필터링된 데이터를 계산하는 로직
-  const filteredData = userData.filter((entry) => {
-    switch (filterBy) {
-      case 'User':
-        return entry.User_pk.toString().toLowerCase().includes(searchTerm.toLowerCase());
-      case 'Id':
-        return entry.ID.toLowerCase().includes(searchTerm.toLowerCase());
-      case 'Phone':
-        return entry.Phone.includes(searchTerm);
-      case 'Date':
-        return new Date(entry.Date).toLocaleString('ko-KR').includes(searchTerm);
-      default:
-        return true;
-    }
-  });
 
+  // 필터링 로직을 조건에 맞게 수정
+  const filteredData = userData.filter(entry => {
+    if (filterBy === 'ID') {
+      return entry.ID.toLowerCase().includes(searchTerm.toLowerCase());
+    } else if (filterBy === 'Phone') {
+      return entry.Phone.includes(searchTerm);
+    } else if (filterBy === 'Date') {
+      return new Date(entry.Date).toLocaleString('ko-KR').includes(searchTerm);
+    }
+    return false;
+  });
   return (
-    <div className="table-container2" style={{ marginBottom: '100px' }}>
+    <div className="table-container2">
       <div className="d-flex mb-5">
         <div className="input-group input-group-sm w-auto">
           <select className="custom-select" style={{ paddingRight: '0rem', width: '100px', border: 'none' }} onChange={handleFilterByChange}>
-            <option value="User">유저정보</option>
-            <option value="Id">아이디</option>
-            <option value="Phone">전화번호</option>
+            <option value="ID">ID</option>
+            <option value="Phone">핸드폰번호</option>
             <option value="Date">가입날짜</option>
           </select>
           <input
@@ -62,7 +57,7 @@ function User() {
             name="table_search"
             className="form-control"
             placeholder="Search"
-            onChange={handleSearchChange}  
+            onChange={handleSearchChange}
             style={{ width: '200px', border: 'none' }}
           />
           <div className="input-group-append">
@@ -72,18 +67,18 @@ function User() {
           </div>
         </div>
       </div>
-      
-      <div className="table-responsive" >
+
+      <div className="table-responsive">
         <table>
           <thead>
             <tr>
-              <th>User_index</th>
+              <th>index</th>
               <th>ID</th>
-              <th>전화번호</th>
+              <th>핸드폰번호</th>
               <th>가입날짜</th>
             </tr>
           </thead>
-          <tbody >
+          <tbody>
             {filteredData.map((entry, index) => (
               <tr key={index}>
                 <td>{entry.User_pk}</td>
