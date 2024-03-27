@@ -19,6 +19,8 @@ const Day = () => {
     maintainAspectRatio: false
   };
 
+  
+
   useEffect(() => {
     // 일별 데이터를 가져옵니다.
     fetch(url + '/getDailyData/')

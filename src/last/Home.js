@@ -10,19 +10,19 @@ function Home() {
   return (
     <div className="home-container"> {/* 스타일시트에서 home-container 클래스를 정의하세요 */}
     <div className="home-section"> {/* 각 섹션을 위한 클래스 */}
-    <div class="home-section-content">
+    <div className="home-section-content">
     <Error />
     </div></div>
     <div className="home-section"> 
-    <div class="home-section-content">
+    <div className="home-section-content">
     <Day />
     </div></div>
     <div className="home-section">
-    <div class="home-section-content">
+    <div className="home-section-content">
     <Phishing />
     </div></div>
     <div className="home-section">
-    <div class="home-section-content">
+    <div className="home-section-content">
     <User /> 
     </div></div>
   </div>

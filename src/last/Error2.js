@@ -93,7 +93,7 @@ function Error() {
     <h2>시간대별 오류 건수</h2>
     <div className="component-container3">
     <div className="chart-wrapper3" >
-      <div className="chart-container3" >
+      <div className="chart-container3" style={{width:'0 auto'}}>
         <canvas ref={chartContainer} />
       </div>
     </div></div></>
